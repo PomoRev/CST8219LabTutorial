@@ -5,6 +5,3 @@
  * deck.h : card, deck, and hand object library
  */
 
-
-
-

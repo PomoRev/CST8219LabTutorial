@@ -1,0 +1,105 @@
+PRETHINK
+
+Card Deck
+            made of Cards  (52 normal deck, 54 with jokers, all different sizes)
+
+                Cards - suit, value (denomination)
+
+            can shuffled
+            deal cards from (draw a card off the deck)
+            number of cards left
+
+            show all the cards in the deck currently
+
+
+Card Hand
+
+            made of cards (drawn from a deck or another hand)
+            show to indivual
+            sort various ways
+            play a card from the hand
+            discard a hand
+
+DESIGN OF OBJECTS
+
+card
+// private data
+
+    suit and a value
+
+// constructors - deconstructor
+
+    constructors
+    
+// utility functions (methods): show card, set temp value for joker.
+    
+    show card
+    get suit
+    get value
+    get card
+
+
+card deck
+// private data
+
+    collection of cards
+
+// constructors - deconstructor
+
+    constructors for different numbers of cards
+
+// utility functions: show deck (test), shuffle deck, draw card, reset deck
+
+    show deck
+    shuffle
+    draw
+    reset
+
+
+card hand
+// private
+
+    collection of cards
+
+// constructors - deconstructor
+
+    constructor for no cards
+    constructor with one card to start
+    constructor with a hand of cards
+
+// utility functions: show hand, play card, sort by suit, sort by value, discard cards
+
+
+    show hand
+    play card
+    sort by value
+    sort by suit
+    discard cards
+    discard hand
+
+
+
+================
+
+Scratch Pad Thinking
+
+
+CODE TO TEST
+
+        build incrementally, test often
+
+
+
+Object Oriented Design
+
+Data (what it is)
+
+    Encapsulation - Data (what it it) & Methods (what it does)
+
+    Polymorphism - ( object inheritance, function and operator overloading)
+
+    Abstraction - (black boxes)
+
+
+
+
