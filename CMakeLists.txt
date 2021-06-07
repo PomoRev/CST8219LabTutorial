@@ -6,6 +6,15 @@
 
 cmake_minimum_required(VERSION 3.20)
 
-project ( test )
+# define the project
 
-add_executable(test main.cpp deck.h)
+project ( cardtest )
+
+# add executable or define project scope
+
+add_executable(${PROJECT_NAME} deck.h main.cpp)
+
+# add compiler options
+
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
