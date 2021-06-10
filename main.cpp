@@ -6,6 +6,26 @@
  * 
  */
 
+#ifndef DECK
+    #define DECK
+    #include "deck.h"
+#endif
+#ifndef IOSTREAM
+    #define IOSTREAM
+    #include <iostream>
+#endif
 
+using namespace std;
+using namespace CARDDECK;
+
+int main (int argCount, char* argValues[]){  
+
+    card myCard;
+
+    cout << "this is my card : " << myCard.getSuitName() << endl;
+
+    return EXIT_SUCCESS;
+
+}
 
 
