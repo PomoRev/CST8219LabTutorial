@@ -21,10 +21,6 @@
     #include <string>
 #endif
 
-// set up environment
-
-using namespace std;
-
 namespace playingcards{
 
 // constant values for suits
@@ -61,67 +57,21 @@ namespace playingcards{
 
         // Constructors & Destructor
 
-        card(short suit, short value){
-
-            this->suit = suit;
-            this->value = value;
-
-        }
-
-        card(){
-
-            // by default make a joker
-
-            suit = JOKER;
-            value = 0;
-
-        }
-
+        card(short suit, short value);
+        card();
         ~card(){}
 
-        // Setters & Getters
+        // Getters and Overloaded Operators
 
-        short getSuit(){ return suit; }
-
-        string getSuitName(){
-
-            string suitName = "No Suit";
-
-            switch (suit){
-
-                case SPADES: 
-                    suitName = "Spades";
-                    break;
-                case DIAMONDS: 
-                    suitName = "Diamonds";
-                    break;          
-                case CLUBS: 
-                    suitName = "Clubs";
-                    break;
-                case HEARTS: 
-                    suitName = "Hearts";
-                    break;
-                case JOKER: 
-                    suitName = "Joker";
-
-            }
-
-            return suitName;
-
-        }
-
-        short getValue(){ return value; }
+        short getSuit();
+        std::string getSuitName();
+        short getValue();
+        std::string getValueName();
+        card operator= (const card &);
 
         // Utility Methods
 
-        void showCard(){
-
-            if (getValue() > 0)
-                cout << "The card is: " << getValue() << " of " << getSuitName() << endl;
-            else 
-                cout << "The card is a " << getSuitName() << endl;
-
-        }
+        void showCard();
 
     };
 

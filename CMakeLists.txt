@@ -12,7 +12,7 @@ project ( cardtest )
 
 # add executable or define project scope
 
-add_executable(${PROJECT_NAME} deck.h main.cpp)
+add_executable(${PROJECT_NAME} deck.h deck.cpp main.cpp)
 
 # add compiler options
 
