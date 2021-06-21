@@ -21,6 +21,11 @@
     #include <string>
 #endif
 
+#ifndef VECTOR
+    #define VECTOR
+    #include <vector>
+#endif
+
 namespace playingcards{
 
 // constant values for suits
@@ -75,4 +80,36 @@ namespace playingcards{
 
     };
 
+/*  Class: playingcards::deck
+ * 
+ *  Creates a deck of playing cards for use with a card game.
+ *    
+ *  Data members: vector of cards
+ *  Member functions: resetDeck, shuffle, showDeck, drawCard, numberCardsLeft
+ *  
+ */
+
+    class deck
+    {
+
+    private:
+        std::vector<card> cards;
+
+    public:
+
+        // Constructors and Destructor
+
+        deck(int numberCards = 52);
+        ~deck(){};
+
+        // utility functions
+
+        void resetDeck();        
+        void shuffle();
+        void showDeck();
+        card drawCard();
+        int numberCardsLeft();        
+
+    };
+    
 }

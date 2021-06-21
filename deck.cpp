@@ -15,6 +15,7 @@
 using namespace playingcards;
 
 // Member functions for the class card
+//
 
 card::card(short suit, short value){
 
@@ -106,3 +107,7 @@ void card::showCard(){
         std::cout << "The card is: " << getValueName() << " of " << getSuitName() << std::endl;
 
 }
+
+// Member functions for the class deck
+//
+
