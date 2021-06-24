@@ -10,21 +10,25 @@
     #include <string>
 #endif
 
+#ifndef VECTOR
+    #define VECTOR
+    #include <vector>
+#endif
+
 namespace CARDDECK{
 
 // Deck Related Constants
 
-enum { SPADES = 0, DIAMONDS, HEARTS, CLUBS, JOKER };
-enum { ACE = 1, JACK = 11, QUEEN, KING };
+    enum { SPADES = 0, DIAMONDS, HEARTS, CLUBS, JOKER };
+    enum { ACE = 1, JACK = 11, QUEEN, KING };
 
-/*  Class: DECK::card
+/*  Class: CARDDECK::card
  * 
  *  To create an individual playing card.
  *  
  *  Data members: suit, value
  *  Methods:
- *      showCard      - displays a card
- *      getCard       - returns a card object
+ *      showCardText  - displays a card
  *      getSuit       - returns the suit value
  *      getSuitName   - returns a string of the card name
  *      getValue      - returns the denomination of the card as a value
@@ -48,39 +52,53 @@ enum { ACE = 1, JACK = 11, QUEEN, KING };
 
         // Setters & Getters
 
-  //      card getCard();
         short getSuit();
         std::string getSuitName();
         short getValue();
- //      std::string getValueName();
+        std::string getValueName();
 
         // Utility Methods
 
-        void showCard();
+        void showCardText();
 
     };
 
+/*  Class: CARDDECK::deck
+ * 
+ *  To create a deck of playing cards.
+ *  
+ *  Data members: vector of cards, number of card remainig
+ *  Methods:
+ *      showDeckText    - displays all the remaining cards in the deck
+ *      resetDeck       - (re)creates the deck at the deck's size
+ *      shuffle         - randomized the deck
+ *      drawCard        - removes a card from the deck returning it as an object
+ *      numberOfCards   - returns the number of cards remaining in the deck
+ * 
+ */ 
 
-   
+    class deck {
+
+    private:
+        
+        std::vector<card> deckOfCards;  // the cards for the deck        
+        int deckSize;                   // the size of the deck for building deck
+
+    public:
+
+        // constructor and destructor
+
+        deck(int deckSize = 52);
+        ~deck() {};
+
+        // utility member functions
+
+        void resetDeck();
+        void showDeckText();
+       
+    };
 
 /*
-    card deck
-    // private data
-
-        collection of cards
-
-    // constructors - deconstructor
-
-        constructors for different numbers of cards
-
-    // utility functions: show deck (test), shuffle deck, draw card, reset deck
-
-        show deck
-        shuffle
-        draw
-        reset
-
-
     card hand
     // private
 

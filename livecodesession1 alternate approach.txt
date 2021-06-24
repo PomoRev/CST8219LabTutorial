@@ -43,6 +43,8 @@ card deck
 // private data
 
     collection of cards
+    deck size
+    build the deck based on number of cards
 
 // constructors - deconstructor
 
@@ -54,6 +56,7 @@ card deck
     shuffle
     draw
     reset
+    numberofcardsremaining
 
 
 card hand
