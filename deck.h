@@ -43,6 +43,10 @@ namespace playingcards{
     const short QUEEN = 12;
     const short KING = 13;
 
+// constant values for decks
+
+    const short STANDARDDECK = 52;
+
 /*  Class: playingcards::card
  * 
  *  Creates an individual card which has a suit and a value.
@@ -68,11 +72,12 @@ namespace playingcards{
 
         // Getters and Overloaded Operators
 
-        short getSuit();
-        std::string getSuitName();
-        short getValue();
-        std::string getValueName();
+        short getSuit() const;
+        std::string getSuitName() const;
+        short getValue() const;
+        std::string getValueName() const;
         card operator= (const card &);
+        friend std::ostream & operator<< (std::ostream &, const card &);
 
         // Utility Methods
 
@@ -94,12 +99,13 @@ namespace playingcards{
 
     private:
         std::vector<card> cards;
+        int numberCardsFullDeck;
 
     public:
 
         // Constructors and Destructor
 
-        deck(int numberCards = 52);
+        deck(int numberCards = STANDARDDECK);
         ~deck(){};
 
         // utility functions
@@ -107,7 +113,7 @@ namespace playingcards{
         void resetDeck();        
         void shuffle();
         void showDeck();
-        card drawCard();
+        card drawCard(); // removes a card from the deck and returns it to the calling environment
         int numberCardsLeft();        
 
     };

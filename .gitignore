@@ -176,3 +176,14 @@ build/.cmake/api/v1/reply/target-cardtest-MinSizeRel-f58e658eb41f2eb42274.json
 build/.cmake/api/v1/reply/target-cardtest-Release-45ada39ab9c753da2ca3.json
 build/.cmake/api/v1/reply/target-cardtest-RelWithDebInfo-b453fea7caf07116b994.json
 build/cardtest.dir/Debug/deck.obj
+build/compile_commands.json
+build/deckofcards.exe
+build/Makefile
+build/.cmake/api/v1/reply/cache-v2-47a65b475f36fca09f43.json
+build/.cmake/api/v1/reply/codemodel-v2-53a91e0c8e70d79a104e.json
+build/.cmake/api/v1/reply/index-2021-07-12T12-51-10-0514.json
+build/.cmake/api/v1/reply/target-cardtest-Debug-0227bd0983156882c75a.json
+build/.cmake/api/v1/reply/target-cardtest-MinSizeRel-e3b34974baf7b4ef91ce.json
+build/.cmake/api/v1/reply/target-cardtest-Release-25c0bb30441b63707911.json
+build/.cmake/api/v1/reply/target-cardtest-RelWithDebInfo-a76a1bccbaa3663aff3a.json
+build/deckofcards.dir/Debug/deck.obj
