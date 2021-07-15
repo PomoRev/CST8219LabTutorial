@@ -175,6 +175,7 @@ void deck::shuffle(){
         for (int i = 0; i < numberCardsLeft(); i++){
 
             int offSet = (std::rand() % numberCardsLeft());
+
             std::swap(cards[i], cards[offSet]);
 
         }
