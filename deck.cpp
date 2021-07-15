@@ -27,6 +27,11 @@
     #include <vector>
 #endif
 
+#ifndef RANDOM
+    #define RANDOM
+    #include <random>
+#endif
+
 using namespace std;
 using namespace CARDDECK;
 
@@ -35,11 +40,11 @@ using namespace CARDDECK;
 
 // getters for card object
 
-short card::getSuit() { return suit; }
+short card::getSuit() const { return suit; }
 
-short card::getValue() { return value; }
+short card::getValue() const { return value; }
 
-string card::getSuitName() {
+string card::getSuitName() const {
 
     string suitName;
 
@@ -66,7 +71,7 @@ string card::getSuitName() {
 
 }
 
-string card::getValueName() {
+string card::getValueName() const {
 
     // this function will return the text of the value, using a number fo the numbers
     // and the word for the special cards.
@@ -104,6 +109,15 @@ void card::showCardText(){
 
     if (suit == JOKER) std::cout << getSuitName();
     else std::cout << getValueName() << " of " << getSuitName();
+
+}
+
+ostream & CARDDECK::operator << (ostream & out, const card & cardToPrint){
+
+    if (cardToPrint.getSuit() == JOKER) out << cardToPrint.getSuitName();
+    else out << cardToPrint.getValueName() << " of " << cardToPrint.getSuitName();
+
+    return out;
 
 }
 
@@ -155,7 +169,6 @@ void deck::resetDeck(){
 
 }
 
-
 void deck::showDeckText(){
 
     // print out the deck in text
@@ -164,11 +177,44 @@ void deck::showDeckText(){
 
     for (card i : deckOfCards){
 
-        i.showCardText();
-        cout << "  ";
+        cout << "  " << i;
 
     }
 
     cout << endl;
+
+}
+
+void deck::shuffleDeck(int numberOfTimes){
+
+    // This function will randomize our vector of cards numberOfTimes amount of times
+    // using the shuffle() from <random>.
+    // 
+
+    for (int i = 0; i < numberOfTimes; i++){
+        std::random_device rd;
+        std::default_random_engine rng(rd());
+        shuffle(deckOfCards.begin(), deckOfCards.end(), rng); 
+    }   
+
+}
+
+int deck::numberOfCards() const{
+
+    // simply returns the number of cards left in the deck.
+
+    return deckOfCards.size();
+
+}
+
+card deck::drawCard() {
+
+    // draws the last card of the deck, removing it from the deck and 
+    // returning it to the calling environment.
+    // place a guard around this when you call it if it is possible the deck is depleted.
+
+    card cardToDraw = deckOfCards.back();
+    deckOfCards.pop_back();
+    return cardToDraw;
 
 }

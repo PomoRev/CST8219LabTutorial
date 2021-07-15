@@ -32,10 +32,18 @@ int main (int argCount, char* argValues[]){
     myOtherCard.showCardText();
     cout << endl;
 
-    deck aDeck(56);
+    deck aDeck;
     aDeck.showDeckText();
 
+    aDeck.shuffleDeck();
 
+    cout << "shuffled "<< aDeck.numberOfCards() << " cards to get " << endl;
+    aDeck.showDeckText();
+
+    cout << "take these cars: " << aDeck.drawCard() << " and " << aDeck.drawCard() << "." << endl;
+
+    cout << "After I have these "<< aDeck.numberOfCards() << " cards." << endl;
+    aDeck.showDeckText();
 
     return EXIT_SUCCESS;
 

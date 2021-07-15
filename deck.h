@@ -52,14 +52,15 @@ namespace CARDDECK{
 
         // Setters & Getters
 
-        short getSuit();
-        std::string getSuitName();
-        short getValue();
-        std::string getValueName();
+        short getSuit() const;
+        std::string getSuitName() const;
+        short getValue() const;
+        std::string getValueName() const;
 
         // Utility Methods
 
         void showCardText();
+        friend std::ostream & operator << (std::ostream &, const card &);
 
     };
 
@@ -67,9 +68,9 @@ namespace CARDDECK{
  * 
  *  To create a deck of playing cards.
  *  
- *  Data members: vector of cards, number of card remainig
+ *  Data members: vector of cards, number of card remaining
  *  Methods:
- *      showDeckText    - displays all the remaining cards in the deck
+ *      showDeckText    - displays all the remaining cards in the deck (test)
  *      resetDeck       - (re)creates the deck at the deck's size
  *      shuffle         - randomized the deck
  *      drawCard        - removes a card from the deck returning it as an object
@@ -95,14 +96,47 @@ namespace CARDDECK{
 
         void resetDeck();
         void showDeckText();
+        void shuffleDeck(int numberOfTimes = 1);
+        card drawCard();
+        int numberOfCards() const;
        
+    };
+
+/*  Class: CARDDECK::hand
+ * 
+ *  To create a hand of playing cards which is a smaller collection (subset) from the deck
+ *  that allow us to build individual hands for players, kitties, mucks, etc. 
+ *  
+ *  Data members: vector of cards
+ * 
+ *  Methods:
+ *      show hand       - reveal the hand to the player (or some kind of output)
+ *      play card       - removes a card from the hand returning it to the calling environment
+ *      sort by value   - sorts the hand of cards by the value 
+ *      sort by suit    - sorts the hand of cards by the suit
+ *      discard card    - removes a cards from the hand ??? is this the same as play card where return is ignored?
+ *      discard hand    - removes all cards from the hand
+ * 
+ */ 
+
+    class hand
+    {
+    private:
+
+        std::vector<card> handOfCards;  // the cards for the hand
+
+    public:
+
+        // constructor and destructor
+
+        hand(){};
+        ~hand() {};
+
     };
 
 /*
     card hand
-    // private
 
-        collection of cards
 
     // constructors - deconstructor
 
