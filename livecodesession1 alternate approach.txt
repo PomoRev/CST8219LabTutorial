@@ -70,6 +70,7 @@ card hand
 // utility functions: show hand, play card, sort by suit, sort by value, discard cards
 
 
+    add a card
     show hand
     play card
     sort by value

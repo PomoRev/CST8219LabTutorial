@@ -47,6 +47,12 @@ namespace playingcards{
 
     const short STANDARDDECK = 52;
 
+// constant values for hands
+
+    const short BYSUIT = 0;
+    const short BYVALUEASC = 1;
+    const short BYVALUEDESC = 2;
+
 /*  Class: playingcards::card
  * 
  *  Creates an individual card which has a suit and a value.
@@ -94,8 +100,7 @@ namespace playingcards{
  *  
  */
 
-    class deck
-    {
+    class deck{
 
     private:
         std::vector<card> cards;
@@ -118,4 +123,28 @@ namespace playingcards{
 
     };
     
+    class hand{
+
+    private:
+        std::vector<card> cards;
+
+    public:   
+
+        // constructor(s) and destructor
+
+        hand() {};
+        ~hand() {}; 
+
+        // utility functions
+
+        void addCard(card);
+        void showHand();
+        card playCard(int);
+        void sortHand(short); // the argument is to tell it if the sort is by value or suit
+        void discardCard();
+        void discardHand();
+        int  findCard( int suit, int value );
+    
+    };
+
 }

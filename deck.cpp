@@ -125,20 +125,7 @@ deck::deck(int numberCards){
 
     numberCardsFullDeck = numberCards;
 
-    // 52 card deck (standard) make cards from ACE to KING in each of four suits
-
-    if (numberCards == STANDARDDECK){
-
-        for (int i = 0; i < 4; i++){ // loop throught the suits
-
-            for ( int j = ACE; j < (KING + 1); j++ ){ // loop through the card denominations
-
-                cards.push_back(card(i,j));
-
-            }
-
-        }
-    }
+    resetDeck();
 
 }
 
@@ -183,6 +170,164 @@ void deck::shuffle(){
     }
 }
 
+void deck::resetDeck(){
 
-        // void resetDeck();        
-        // card drawCard(); // removes a card from the deck and returns it to the calling environment
+    // using the number of card in the deck we will gather up the cards and reshuffle
+
+    if (numberCardsFullDeck >= STANDARDDECK){
+
+        // 52 card deck (standard) make cards from ACE to KING in each of four suits
+
+        for (int i = 0; i < 4; i++){ // loop throught the suits
+
+            for ( int j = ACE; j < (KING + 1); j++ ){ // loop through the card denominations
+
+                cards.push_back(card(i,j));
+
+            }
+
+        }
+
+    } 
+
+    if ((numberCardsFullDeck > STANDARDDECK) && (numberCardsFullDeck <= (STANDARDDECK + 4))) {
+
+        // Add the jokers
+
+        for (int i = 0; i < (numberCardsFullDeck - STANDARDDECK); i++){
+
+            cards.push_back( card() );
+
+        }
+
+    }
+
+    return;
+
+}
+
+card deck::drawCard(){
+
+    // returns the last card from the deck, guard this member call to ensure we are not trying to 
+    // remove a card from an empty deck
+
+    card cardToPlay = cards.back();
+    cards.pop_back();
+
+    return cardToPlay;
+
+}
+
+void hand::addCard( card cardToAdd){
+
+    cards.push_back( cardToAdd );
+
+}
+
+void hand::showHand(){
+
+    std::cout << "Hand contains: ";
+
+    for (int i = 0; i < cards.size(); i++ ){
+
+        std::cout << cards[i];
+
+        (i < cards.size() - 1) ? std::cout << ", " 
+                : std::cout << "." << std::endl;
+
+    }
+
+}
+
+card hand::playCard(int index){
+
+    // returns the last card from the deck, guard this member call to ensure we are not trying to 
+    // remove a card from an empty deck
+
+    card cardToPlay(cards[index].getSuit(), cards[index].getValue());
+    cards.erase(cards.begin() + index);
+
+    return cardToPlay;
+
+}
+
+void hand::sortHand( short typeOfSort){
+
+    // typeOfSort tells us how to sort the hand BYSUIT or BYVALUE (ascending or descending)
+
+    if (typeOfSort == BYVALUEASC){
+
+        // sort numerically by value ascending order
+
+
+        for ( int i = 0; i < cards.size(); i++){
+
+            // out loop goes through each cards
+
+            for ( int j = i + 1; j < cards.size(); j++ ){
+
+                // inner loop loops through the rest of the cards
+                // compare the card values
+
+                if ( cards[i].getValue() > cards[j].getValue()){
+
+                    std::swap(cards[i], cards[j]);
+
+                }
+
+            }
+
+        }
+
+    } else {
+
+        // sort numberically by value descending order
+
+        for ( int i = 0; i < cards.size(); i++){
+
+            // out loop goes through each cards
+
+            for ( int j = i + 1; j < cards.size(); j++ ){
+
+                // inner loop loops through the rest of the cards
+                // compare the card values
+
+                if ( cards[i].getValue() < cards[j].getValue()){
+
+                    std::swap(cards[i], cards[j]);
+
+                }
+
+            }
+
+        }
+    }
+
+    if (typeOfSort == BYSUIT){
+
+        // sort sorted hand by suit
+
+        for ( int i = 0; i < cards.size(); i++){
+
+            // out loop goes through each cards
+
+            for ( int j = i + 1; j < cards.size(); j++ ){
+
+                // inner loop loops through the rest of the cards
+                // compare the card values
+
+                if ( cards[i].getSuit() > cards[j].getSuit()){
+
+                    std::swap(cards[i], cards[j]);
+
+                }
+
+            }
+
+        }
+
+    }
+
+    return;
+}
+

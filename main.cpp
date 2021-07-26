@@ -22,10 +22,15 @@ using namespace playingcards;
 int main(int argc, char const *argv[])
 {
 
-    cout << "Create a Card and display it" << endl;
+    deck myDeck(56);
+    //myDeck.showDeck();
+    myDeck.shuffle();
+    //myDeck.showDeck();
 
-    card FirstCard(HEARTS, 7);
-    card SecondCard(DIAMONDS, KING);
+    cout << "draw a Card and display it" << endl;
+
+    card FirstCard = myDeck.drawCard();
+    card SecondCard = myDeck.drawCard();
 
     FirstCard.showCard();
     SecondCard.showCard();
@@ -34,19 +39,59 @@ int main(int argc, char const *argv[])
     
     // cout << "Copy second card into first card, this is the first card: ";
 
-
     // FirstCard = SecondCard;
-
     // FirstCard.showCard();
-   
 
     cout << endl;
 
-    deck myDeck;
-    myDeck.showDeck();
-    myDeck.shuffle();
-    myDeck.showDeck();
+    hand myHand;
 
+    myHand.addCard( myDeck.drawCard() );
+    myHand.addCard( myDeck.drawCard() );
+    myHand.addCard( myDeck.drawCard() );
+    myHand.addCard( myDeck.drawCard() );
+    myHand.addCard( myDeck.drawCard() );
+    myHand.addCard( myDeck.drawCard() );
+
+    myHand.showHand();
+
+    cout << "unsorted" << endl;
+
+    myHand.sortHand(BYVALUEASC);
+
+    myHand.showHand();
+
+    cout << "sorted" << endl;
+
+    myHand.sortHand(BYVALUEDESC);
+
+    myHand.showHand();
+
+    cout << "sorted" << endl;
+
+    myHand.sortHand(BYSUIT);
+
+    myHand.showHand();
+
+    cout << "sorted" << endl;
+
+    hand myOtherHand;
+
+    myOtherHand.addCard ( myHand.playCard(0) );
+
+    myOtherHand.showHand();
+
+    cout << endl;
+
+    myHand.showHand();
+
+    cout << endl;   
+
+    // show deck with removed cards
+
+    //myDeck.showDeck();
+
+    cout << endl;
 
     return EXIT_SUCCESS;
 }
