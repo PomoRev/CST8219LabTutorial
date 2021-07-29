@@ -110,10 +110,13 @@ namespace CARDDECK{
  *  Data members: vector of cards
  * 
  *  Methods:
+ *      get numbercards - returns the number of cards currently in hand
+ *      get card index  - return the index of a card or -1 when not found.
+ *      add card        - adds a card to the hand
  *      show hand       - reveal the hand to the player (or some kind of output)
  *      play card       - removes a card from the hand returning it to the calling environment
- *      sort by value   - sorts the hand of cards by the value 
- *      sort by suit    - sorts the hand of cards by the suit
+ *      sort hand       - sorts the hand of cards by the value 
+ *                      - sorts the hand of cards by the suit
  *      discard card    - removes a cards from the hand ??? is this the same as play card where return is ignored?
  *      discard hand    - removes all cards from the hand
  * 
@@ -130,28 +133,26 @@ namespace CARDDECK{
         // constructor and destructor
 
         hand(){};
+        hand(card);
         ~hand() {};
 
+        // getters and setters
+
+        inline int getNumberCards() const {
+            return handOfCards.size();
+        }
+        int getCardIndex(short suit, short value);
+
+        void addCardToHand(card);
+
+        // utility functions
+
+        void showHandText();
+        card playCard(int index);
+        void sortHand(short typeOfSort);
+        void discardCard(int index);
+        void discardHand();
+
     };
-
-/*
-    card hand
-
-
-    // constructors - deconstructor
-
-        constructor for no cards
-        constructor with one card to start
-        constructor with a hand of cards
-
-    // utility functions: show hand, play card, sort by suit, sort by value, discard cards
-
-
-        show hand
-        play card
-        sort by value
-        sort by suit
-        discard cards
-        discard hand */
 
 }

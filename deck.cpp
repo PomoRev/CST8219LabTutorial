@@ -218,3 +218,76 @@ card deck::drawCard() {
     return cardToDraw;
 
 }
+
+hand::hand(card firstCard){
+
+    handOfCards.push_back(firstCard);
+
+}
+
+int  hand::getCardIndex(short suit, short value){
+
+    // search for the index of a specific card and if found return
+    // its index in the vector, otherwise return -1
+
+    int index = -1, currentCard = 0;
+
+
+    while ((currentCard < getNumberCards()) && (index == -1) ){
+
+        card cardToCheck = handOfCards[currentCard];
+
+        if (cardToCheck.getValue() == value){
+
+            if (cardToCheck.getSuit() == suit){
+
+                index = currentCard;
+
+            }
+
+        }
+
+        currentCard++;
+
+    }
+
+    return index;
+
+}
+
+void hand::addCardToHand(card cardToAdd){
+
+    // adds a card to the hand vector
+
+    handOfCards.push_back(cardToAdd);
+
+}
+
+void hand::showHandText(){
+
+    // print out the deck in text
+
+    cout << "My hand: ";
+
+    for (card i : handOfCards){
+
+        cout << " " << i;
+
+    }
+
+    cout << endl;
+
+}
+
+card hand::playCard(int index){
+
+    // Using the index we will remove the card returning a copy to
+    // to the calling environment. 
+
+    card playedCard(handOfCards[index].getSuit(), handOfCards[index].getValue());
+    handOfCards.erase(handOfCards.begin() + index);
+
+    return playedCard;
+
+}
+
