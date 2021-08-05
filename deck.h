@@ -21,6 +21,7 @@ namespace CARDDECK{
 
     enum { SPADES = 0, DIAMONDS, HEARTS, CLUBS, JOKER };
     enum { ACE = 1, JACK = 11, QUEEN, KING };
+    enum { SUIT, VALUE_ASC, VALUE_DESC };
 
 /*  Class: CARDDECK::card
  * 

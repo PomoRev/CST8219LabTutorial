@@ -51,6 +51,12 @@ int main (int argCount, char* argValues[]){
     myHand.addCardToHand( aDeck.drawCard() );
     myHand.addCardToHand( aDeck.drawCard() );
     myHand.showHandText();
+    myHand.sortHand(VALUE_ASC);
+    myHand.showHandText();
+    myHand.sortHand(VALUE_DESC);
+    myHand.showHandText();
+    myHand.sortHand(SUIT);
+    myHand.showHandText();
 
     short suit, value;
     char suitLetter;
@@ -63,7 +69,8 @@ int main (int argCount, char* argValues[]){
         case 's': suit = SPADES; break;
         case 'h': suit = HEARTS; break;
         case 'd': suit = DIAMONDS; break;
-        case 'c': suit = CLUBS; 
+        case 'c': suit = CLUBS; break;
+        default : suit = JOKER; break; 
     }
 
     cout << "enter the value as a number (1-13): ";

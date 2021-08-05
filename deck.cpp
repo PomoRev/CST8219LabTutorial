@@ -291,3 +291,71 @@ card hand::playCard(int index){
 
 }
 
+void hand::sortHand(short typeOfSort){
+
+    // Use bubble sort to arrange the cards in a hand in the following orders:
+    // SUIT (by value ascending and then grouped by suit)
+    // VALUE_ASC (by value from small to large)
+    // VALUE_DESC (by value from large to small)
+
+    if ((typeOfSort == SUIT) || (typeOfSort == VALUE_ASC)){
+
+        // 2, 4, 6, 3, 1
+        // 1, 4, 6, 3, 2
+        // 1, 3, 6, 4, 2 -> 1, 2, 6, 4, 3
+        // 1, 2, 4, 6, 3 -> 1, 2, 3, 6, 4
+        // 1, 2, 3, 4, 6
+
+        // [HEAD]   -> compare with remaining cards in vector [HEAD +  1-end] when card[0] < card[0+#] then swap
+
+        for (int head = 0; head < (handOfCards.size() -1); head++ ){
+
+            // outer loop governs which left side card we are comparing
+
+            for (int inside = head + 1; inside < (handOfCards.size()); inside++ ){
+
+                // inner loop compares the head card with each subsequent card in the vector
+
+                if (handOfCards[head].getValue() > handOfCards[inside].getValue()) swap(handOfCards[head], handOfCards[inside]);
+
+            }
+        }
+
+        if (typeOfSort == SUIT){
+
+            // group by suit
+
+            for (int head = 0; head < (handOfCards.size() -1); head++ ){
+
+            // outer loop governs which left side card we are comparing
+
+                for (int inside = head + 1; inside < (handOfCards.size()); inside++ ){
+
+                    // inner loop compares the head card with each subsequent card in the vector
+
+                    if (handOfCards[head].getSuit() > handOfCards[inside].getSuit()) swap(handOfCards[head], handOfCards[inside]);
+
+                }
+            }
+
+        }
+
+    } else {
+
+        for (int head = 0; head < (handOfCards.size() -1); head++ ){
+
+            // outer loop governs which left side card we are comparing
+
+            for (int inside = head + 1; inside < (handOfCards.size()); inside++ ){
+
+                // inner loop compares the head card with each subsequent card in the vector
+
+                if (handOfCards[head].getValue() < handOfCards[inside].getValue()) swap(handOfCards[head], handOfCards[inside]);
+
+            }
+        }
+
+    }
+
+    return;
+}
