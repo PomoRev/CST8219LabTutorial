@@ -15,6 +15,11 @@
     #include <vector>
 #endif
 
+#ifndef SFMLGRAPHICS
+    #define SFMLGRAPHICS
+    #include <SFML\Graphics.hpp>
+#endif
+
 namespace CARDDECK{
 
 // Deck Related Constants
